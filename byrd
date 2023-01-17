@@ -1,0 +1,57 @@
+import random
+
+player_wins = 0
+computer_wins = 0
+
+options = ["rock", "paper", "scissors"]
+
+name = input("What is your name?: ")
+
+while True:
+    player_guess = input("Rock, paper, scissors, SHOOT! (Enter your choice; Q to quit):  ").lower()
+    if player_guess == "q":
+        break
+
+    if player_guess not in options:
+        continue
+
+    random_number = random.randint(0, 2)
+    computer_pick = options[random_number]
+    print(f"You chose {player_guess},  Computer picked {computer_pick}.")
+
+    if player_guess == computer_pick:
+        print("Tie!")
+
+    elif player_guess == "rock":
+        if computer_pick == "scissors":
+            print("Rock smashes scissors! You win!")
+            player_wins += 1
+        else:
+            print("Paper covers rock! You lose.")
+            computer_wins  += 1
+
+    elif player_guess == "scissors":
+        if computer_pick == "paper":
+            print("Scissors cuts paper! You win!")
+            player_wins += 1
+        else:
+            print("Rock smashes scissors! You lose.")
+            computer_wins  += 1
+
+    elif player_guess == "paper":
+        if computer_pick == "rock":
+            print("Paper covers rock! You win!")
+            player_wins += 1
+        else:
+            print("Scissors cuts paper! You lose.")
+            computer_wins  += 1
+
+if computer_wins > player_wins:
+    print(f"Sorry {name}, the computer has beaten you. Bummer.")
+elif computer_wins == player_wins:
+    print("You've tied in wins with the computer, you should play again.")
+else:
+    print(f"You've beaten the computer overall! Good job {name}!!")
+
+print(f"You've won {player_wins} times, and the computer won {computer_wins} times.")
+print("Thank you for playing!")
